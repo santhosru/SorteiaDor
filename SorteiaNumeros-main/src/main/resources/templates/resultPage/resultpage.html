@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+            integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.min.js"></script>
+    <title>Sorteador de Números</title>
+     <style>
+        body {
+            background-color: #f2f2f2;
+        }
+        
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px; /* Aumentei o padding para dar mais espaço interno */
+            margin-top: 20px;
+        }
+        
+        #title {
+            color: #333;
+            font-size: 24px; /* Aumentei o tamanho da fonte */
+        }
+        
+        .list-group-item {
+            background-color: #1a7272;
+            color: #fff;
+            font-weight: bold;
+            font-size: 18px;
+            margin: 10px;
+            padding: 15px 20px; /* Ajustei o padding */
+            border: 2px solid #1a7272;
+            border-radius: 50%;
+        }
+
+        .mb-5{
+            gap: 30px;
+        }
+
+        .infos{
+            width: 300px;
+            height: 200px;
+            padding: 20px;
+        }
+
+        .config-text{
+            font-size: 20px; /* Ajustei o tamanho da fonte */
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: #14aaaa;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #125858fa;
+        }
+
+        .accordion-button {
+            background-color: #1a7272;
+            color: #fff;
+        }
+
+        .accordion-button:hover {
+            background-color: #1a7272;
+        }
+
+        .accordion-body {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+        
+        @media (max-width: 768px) {
+            .list-group-item {
+                font-size: 16px; /* Ajustei o tamanho da fonte */
+                padding: 10px 15px; /* Ajustei o padding */
+            }
+            
+            .config-text {
+                font-size: 16px; /* Ajustei o tamanho da fonte */
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container text-center">
+    <h2 id="title" class="mt-3 mb-3">Resultado do Sorteio:</h2>
+    <div class="d-grid gap-3">
+        <mb-5 class="d-flex justify-content-center align-items-center flex-wrap">
+            <mb-3 class="list-group-item disabled"
+                th:each="item : ${numerosSorteados}" th:text="${item}"></mb-3>
+        </mb-5>
+    </div>
+    <h4 class="mb-3 mt-4">Informação do Sorteio:</h4>
+    <div class="d-flex justify-content-around">
+        <div id="data-sorteio" class="infos col-span-2 md:col-span-1 mx-center rounded-lg
+        p-3 md:p-5 text-center mt-2 bg-white dark:bg-gray-800 dark:text-gray-300">
+            <p>Data do Sorteio:</p>
+            <div class="pt-4">
+                <p class="config-text" th:text="${data}"></p>
+            </div>
+        </div>
+        <div id="qtd-sorteio" class="infos col-span-2 md:col-span-1 mx-center rounded-lg
+        p-3 md:p-5 text-center mt-2 bg-white dark:bg-gray-800 dark:text-gray-300">
+            <p>Quantidade Sorteada:</p>
+            <div class="pt-4">
+                <p class="config-text" th:text="${qtdSorteada}"></p>
+            </div>
+        </div>
+        <div id="sorteio-entre"
+             class="infos col-span-2 md:col-span-1 mx-center rounded-lg
+        p-3 md:p-5 text-center mt-2 bg-white dark:bg-gray-800 dark:text-gray-300">
+            <p>Sorteio entre:</p>
+            <div class="pt-4">
+                <p class="config-text" th:text="${numeroMinimo + ' e ' + numeroMaximo}"></p>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4 text-center">
+        <a href="/" class="btn btn-primary">Retornar ao Sorteio</a>
+    </div>
+</div>
+</body>
+</html>
